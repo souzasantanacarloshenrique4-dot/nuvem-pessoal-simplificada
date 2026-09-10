@@ -1,3 +1,4 @@
+  GNU nano 8.7.1                                      src/routes/filesRoutes.js                                               
 const express = require('express');
 const filesController = require('../controllers/filesController');
 
@@ -8,3 +9,9 @@ router.get('/files', filesController.listFiles);
 router.get('/files/:filename', filesController.getFile);
 
 module.exports = router;
+
+
+
+
+
+
