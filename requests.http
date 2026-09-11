@@ -1,0 +1,25 @@
+### Teste 1 - Verificar API
+GET http://localhost:3001/
+
+###
+
+### Teste 2 - Listar arquivos
+GET http://localhost:3001/files
+
+###
+
+### Teste 3 - Enviar arquivo
+POST http://localhost:3001/files/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
+
+------WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="teste.txt"
+Content-Type: text/plain
+
+teste de upload pela API
+------WebKitFormBoundary--
+
+###
+
+### Teste 4 - Baixar arquivo
+GET http://localhost:3001/files/teste.txt
