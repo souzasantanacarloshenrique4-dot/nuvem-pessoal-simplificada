@@ -16,7 +16,7 @@ async function uploadFile(file) {
 async function listFiles() {
   const files = [];
 
-  const stream = minioClient.listObjects(bucketName, true);
+  const stream = minioClient.listObjects(bucketName, '', true);
 
   return new Promise((resolve, reject) => {
     stream.on('data', (file) => {

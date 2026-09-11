@@ -1,17 +1,17 @@
-  GNU nano 8.7.1                                      src/routes/filesRoutes.js                                               
 const express = require('express');
+const multer = require('multer');
+
 const filesController = require('../controllers/filesController');
 
 const router = express.Router();
 
-router.post('/upload', filesController.uploadFile);
-router.get('/files', filesController.listFiles);
-router.get('/files/:filename', filesController.getFile);
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+router.post('/upload', upload.single('file'), filesController.uploadFile);
+
+router.get('/', filesController.listFiles);
+
+router.get('/:filename', filesController.getFile);
 
 module.exports = router;
-
-
-
-
-
-
