@@ -31,5 +31,23 @@ services:
       mc mb --ignore-existing minio/arquivos-pessoais;
       '
 
+  api:
+    build: .
+    container_name: nuvem-api
+    ports:
+      - "3001:3000"
+    environment:
+      PORT: 3000
+      MINIO_ENDPOINT: minio
+      MINIO_PORT: 9000
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+    depends_on:
+      minio:
+        condition: service_healthy
+      minio-mc:
+        condition: service_completed_successfully
+
 volumes:
   minio_data:
